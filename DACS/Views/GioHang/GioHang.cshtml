@@ -1,0 +1,189 @@
+﻿@model IEnumerable<DACS.Models.GioHang>
+<div class="colorlib-loader"></div>
+<div id="page">
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="bread"><span><a href="index.html">Trang Chủ</a></span> / <span>Giỏ Hàng</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-product">
+        <div class="container">
+            <div class="row row-pb-lg">
+                <div class="col-md-10 offset-md-1">
+                    <div class="process-wrap">
+                        <div class="process text-center active">
+                            <p><span>01</span></p>
+                            <h3>Giỏ Hàng</h3>
+                        </div>
+                        <div class="process text-center">
+                            <p><span>02</span></p>
+                            <h3>Thông Tin Đặt Hàng</h3>
+                        </div>
+                        <div class="process text-center">
+                            <p><span>03</span></p>
+                            <h3>Thanh Toán Thành Công</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-pb-lg">
+                <div class="col-md-12">
+                    <div class="product-name d-flex">
+                        <div class="one-forth text-left px-4">
+                            <span>Tên sản phẩm</span>
+                        </div>
+                        <div class="one-eight text-center">
+                            <span>Giá Bán</span>
+                        </div>
+                        <div class="one-eight text-center">
+                            <span>Số Lượng</span>
+                        </div>
+                        <div class="one-eight text-center">
+                            <span>Size</span>
+                        </div>
+                        <div class="one-eight text-center">
+                            <span>Tổng</span>
+                        </div>
+                        <div class="one-eight text-center px-4">
+                            <span>Xóa</span>
+                        </div>
+                        <div class="one-eight text-center px-4">
+                            <span>Cập nhật</span>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSp = item.iMaSP }))
+                        {
+                            <div class="product-cart d-flex">
+                                <div class="one-forth">
+                                    @*<div class="product-img" style="background-image: url(/images/item-6.jpg);">*@
+                                    <img class="product-img" src="~/images/@item.sHinhAnh"/>
+                                    @*</div>*@
+                                    <div class="display-tc">
+                                        <h3>@item.sTenSP</h3>
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        <span class="price">@string.Format("{0:0,0}", item.dGiaBan) VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        <input type="number" id="quantity" name="txtSoluong" class="form-control input-number text-center" value="@item.iSoluong" min="1" max="100">
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        <input type="number" id="quantity1" name="size" class="form-control input-number text-center" value="@item.iSize" min="36" max="45">
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        <span class="price">@string.Format("{0:0,0}", ViewBag.TongTien) VNĐ</span>
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        @*<a href="@Html.ActionLink("Xóa","XoaGiohang", new { @iMaSP = item.iMaSP })"> </a>*@
+                                        <a href="@Url.Action("XoaGiohang","GioHang",new { @iMaSP = item.iMaSP })"> Xóa </a>
+                                    </div>
+                                </div>
+                                <div class="one-eight text-center">
+                                    <div class="display-tc">
+                                        <button class="btn" type="submit">Cập Nhật</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="row row-pb-lg">
+                <div class="col-md-12">
+                    <div class="total-wrap">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <form action="#">
+                                    <div class="row form-group">
+                                        <div class="col-sm-3">
+                                            <p><a href="/giohang/checkout" class="btn btn-primary">Tiến Hành Đặt Hàng</a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <div class="total">
+                                    @*<div class="sub">*@
+                                        @*<p><span>Tổng tiền sản phẩm:</span> <span>$200.00</span></p>
+                                        @*<p><span>:</span> <span>$0.00</span></p>*@
+                                        @*<p><span>Discount:</span> <span>$45.00</span></p>*@
+                                        <p><span><strong>Tổng tiền:</strong></span> <span>@string.Format("{0:0,0}", ViewBag.TongTien) VNĐ</span></p>
+                                    </div>
+                                    @*<div class="grand-total">
+                                    </div>*@
+                                @*</div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                    <h2>Sản Phẩm Liên Quan</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="#" class="prod-img">
+                            <img src="/images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                            <span class="price">$139.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="#" class="prod-img">
+                            <img src="/images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="#">Women's Minam Meaghan</a></h2>
+                            <span class="price">$139.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="#" class="prod-img">
+                            <img src="/images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="#">Men's Taja Commissioner</a></h2>
+                            <span class="price">$139.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="#" class="prod-img">
+                            <img src="/images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="#">Russ Men's Sneakers</a></h2>
+                            <span class="price">$139.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

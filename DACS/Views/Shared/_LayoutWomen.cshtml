@@ -1,0 +1,630 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>K'Shoe Store</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+    <style>
+        .dropbtn {
+          background-color: white;
+          color: black;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+        }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+          background-color: #f1f1f1;
+        }
+    </style>
+
+    <link href="~/Content/NguoiDungCSS/NguoiDungCSS.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <!-- Icomoon Icon Fonts-->
+    <link href="~/Content/icomoon.css" rel="stylesheet" />
+    <!-- Ion Icon Fonts-->
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    <!-- Bootstrap  -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Magnific Popup -->
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <!-- Flexslider  -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <!-- Owl Carousel -->
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!-- Date Picker -->
+    <link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <!-- Flaticons  -->
+    <link href="~/fonts/flaticon/font/flaticon.css" rel="stylesheet" />
+    <!-- Theme style  -->
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="colorlib-nav" role="navigation">
+        <div class="container">
+            <div class="row m-0" style="justify-content:space-between">
+                <div>
+                    <i class="fas fa-phone-volume"></i>
+                    (09) 49 601714
+                </div>
+                <div class="DangKyDangNhap">
+                    @if (Session["Taikhoankh"] == null || Session["Taikhoankh"].ToString() == "")
+                    {
+                    <i class="fas fa-unlock-alt"></i>
+                    <a href="/nguoidung/dangky">Đăng Ký</a>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <a href="/nguoidung/dangnhap">Đăng Nhập</a>
+                    }
+                    else
+                    {
+
+                    <div class="dropdown">
+                        <i class="dropbtn">Hello,@Session["Tentkh"]</i>
+                        <div class="dropdown-content">
+                            <a href="@Url.Action("Dangxuat","NguoiDung")">Log Out</a>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="top-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 col-md-9">
+                        <div id="colorlib-logo"><a href="/home">K'Shoe Store</a></div>
+                    </div>
+                    <div class="col-sm-5 col-md-3">
+
+                        <form action="#" class="search-wrap">
+                            <div class="form-group">
+                                <input type="search" class="form-control search" placeholder="Search">
+                                <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-left menu-1">
+                        <ul>
+                            <li class="active"><a href="#">Trang Chủ</a></li>
+                            <li class="has-dropdown">
+                                <a href="/home/product">Sản Phẩm</a>
+                                <ul class="dropdown" style ="position:absolute;left:2px;top:5px;">
+                                    <li><a href="/home/men">Giày Nam</a></li>
+                                    <li><a href="/home/women">Giày Nữ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/home/news">Tin Tức</a></li>
+                            <li><a href="#">Giới Thiệu</a></li>
+                            <li><a href="/home/contact">Liên Hệ</a></li>
+                            <li class="cart">
+                                @Html.Action("GiohangPartial", "GioHang")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sale">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-2 text-center">
+                        <div class="row">
+                            <div class="owl-carousel2">
+                                <div class="item">
+                                    <div class="col">
+                                        <h3><a href="#">25% off (Almost) Everything! Use Code: Summer Sale</a></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col">
+                                        <h3><a href="#">Our biggest sale yet 50% off all summer shoes</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="bread"><span><a href="index.html">Trang Chủ</a></span> / <span>Giày Nữ</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs-two">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="breadcrumbs-img" style="background-image: url(/images/cover-img-1.jpg);">
+                        <h2>Women's</h2>
+                    </div>
+                    <div class="menu text-center">
+                        <p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a href="#">Sale</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="featured">
+                        <div class="featured-img featured-img-2" style="background-image: url(/images/img_bg_2.jpg);">
+                            <h2>Casuals</h2>
+                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="featured">
+                        <div class="featured-img featured-img-2" style="background-image: url(/images/women.jpg);">
+                            <h2>Dress</h2>
+                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="featured">
+                        <div class="featured-img featured-img-2" style="background-image: url(/images/item-11.jpg);">
+                            <h2>Sports</h2>
+                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="colorlib-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-xl-3">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Thương Hiệu</h3>
+                                <ul>
+                                    <li><a href="#">Nike</a></li>
+                                    <li><a href="#">Adidas</a></li>
+                                    <li><a href="#">Merrel</a></li>
+                                    <li><a href="#">Gucci</a></li>
+                                    <li><a href="#">Skechers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Size/Width</h3>
+                                <div class="block-26 mb-2">
+                                    <h4>Kích Cỡ</h4>
+                                    <ul>
+                                        <li><a href="#">7</a></li>
+                                        <li><a href="#">7.5</a></li>
+                                        <li><a href="#">8</a></li>
+                                        <li><a href="#">8.5</a></li>
+                                        <li><a href="#">9</a></li>
+                                        <li><a href="#">9.5</a></li>
+                                        <li><a href="#">10</a></li>
+                                        <li><a href="#">10.5</a></li>
+                                        <li><a href="#">11</a></li>
+                                        <li><a href="#">11.5</a></li>
+                                        <li><a href="#">12</a></li>
+                                        <li><a href="#">12.5</a></li>
+                                        <li><a href="#">13</a></li>
+                                        <li><a href="#">13.5</a></li>
+                                        <li><a href="#">14</a></li>
+                                    </ul>
+                                </div>
+                                <div class="block-26">
+                                    <h4>Width</h4>
+                                    <ul>
+                                        <li><a href="#">M</a></li>
+                                        <li><a href="#">W</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Style</h3>
+                                <ul>
+                                    <li><a href="#">Slip Ons</a></li>
+                                    <li><a href="#">Boots</a></li>
+                                    <li><a href="#">Sandals</a></li>
+                                    <li><a href="#">Lace Ups</a></li>
+                                    <li><a href="#">Oxfords</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Màu Sắc</h3>
+                                <ul>
+                                    <li><a href="#" style="color: black;">Đen</a></li>
+                                    <li><a href="#" style="color:darkslategrey;">Trắng</a></li>
+                                    <li><a href="#" style="color:blue;">Xanh Biển</a></li>
+                                    <li><a href="#" style="color:red;">Đỏ</a></li>
+                                    <li><a href="#" style="color:green;">Xanh Lá</a></li>
+                                    <li><a href="#" style="color:grey;">Bạc</a></li>
+                                    <li><a href="#" style="color:orange;">Cam</a></li>
+                                    <li><a href="#" style="color:chocolate;">Kem</a></li>
+                                    <li><a href="#" style="color:brown;">Nâu</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Material</h3>
+                                <ul>
+                                    <li><a href="#">Leather</a></li>
+                                    <li><a href="#">Suede</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="side border mb-1">
+                                <h3>Technologies</h3>
+                                <ul>
+                                    <li><a href="#">BioBevel</a></li>
+                                    <li><a href="#">Groove</a></li>
+                                    <li><a href="#">FlexBevel</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-xl-9">
+                    <div class="row row-pb-md">
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Minam Meaghan</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Men's Taja Commissioner</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Russ Men's Sneakers</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-5.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-6.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-7.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-8.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-9.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-10.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-11.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-12.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-13.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-14.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 text-center">
+                            <div class="product-entry border">
+                                <a href="#" class="prod-img">
+                                    <img src="~/images/item-15.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                                <div class="desc">
+                                    <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                                    <span class="price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="block-27">
+                                <ul>
+                                    <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
+                                    <li class="active"><span>1</span></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                    <h2>Trusted Partners</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col partner-col text-center">
+                    <img src="~/images/brand-1.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="~/images/brand-2.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="~/images/brand-3.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="~/images/brand_4.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+                <div class="col partner-col text-center">
+                    <img src="~/images/brand-5.jpg" class="img-fluid" alt="Free html4 bootstrap 4 template">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="colorlib-footer" role="contentinfo">
+        <div class="container">
+            <div class="row row-pb-md">
+                <div class="col footer-col colorlib-widget">
+                    <h4>About K'Shoe Store</h4>
+                    <p>K'Shoe Store đảm bảo chất lượng cho tất cả sản phẩm bán tại Store MWC bằng chính sách bảo hành vĩnh viễn</p>
+                    <p>
+                        <ul class="colorlib-social-icons">
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="col footer-col colorlib-widget">
+                    <h4>CHĂM SÓC KHÁCH HÀNG</h4>
+                    <p>
+                        <ul class="colorlib-footer-links">
+                            <li><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                            <li><a href="#">Phiếu quà tặng</a></li>
+                            <li><a href="#">Tra Cứu Bảo Hành</a></li>
+                            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+                            <li><a href="#">Hỗ Trợ</a></li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="col footer-col colorlib-widget">
+                    <h4>CHÍNH SÁCH</h4>
+                    <p>
+                        <ul class="colorlib-footer-links">
+                            <li><a href="#">Chính Sách Ưu Đãi</a></li>
+                            <li><a href="#">Chính Sách Bảo Mật</a></li>
+                            <li><a href="#">Chính Sách Giao Nhận</a></li>
+                            <li><a href="#">Chính Sách Đổi Trả</a></li>
+                        </ul>
+                    </p>
+                </div>
+                @*<div class="col footer-col">
+                    <h4>TIN TỨC</h4>
+                    <ul class="colorlib-footer-links">
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Exhibitions</a></li>
+                    </ul>
+                    </div>*@
+                <div class="col footer-col">
+                    <h4>THÔNG TIN LIÊN HỆ</h4>
+                    <ul class="colorlib-footer-links">
+                        <li>135/58 Trần Hưng Đạo, Q.1, TPHCM</li>
+                        <li class="fas fa-phone"><a href="tel://1234567920"> 09 49601714</a></li>
+                        <li class="fas fa-envelope"><a href="mailto:goldencooly456@gmail.com"> goldencooly456@gmail.com</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copy">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <p>
+                        <span>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Nguyễn Phùng Gia Khang
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.min.js"></script>
+    <!-- popper -->
+    <script src="~/Scripts/popper.min.js"></script>
+    <!-- bootstrap 4.1 -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- jQuery easing -->
+    <script src="~/Scripts/jquery.easing.1.3.js"></script>
+    <!-- Waypoints -->
+    <script src="~/Scripts/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <!-- Owl carousel -->
+    <script src="~/Scripts/owl.carousel.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="~/Scripts/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/magnific-popup-options.js"></script>
+    <!-- Date Picker -->
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <!-- Stellar Parallax -->
+    <script src="~/Scripts/jquery.stellar.min.js"></script>
+    <!-- Main -->
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

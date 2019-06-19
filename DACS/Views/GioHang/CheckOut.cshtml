@@ -1,0 +1,156 @@
+﻿
+@model IEnumerable<DACS.Models.GioHang>
+@using DACS.Models
+@{
+    KhachHang kh = (KhachHang)Session["Taikhoankh"];
+}
+<div class="colorlib-loader"></div>
+<div id="page">
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="bread"><span><a href="index.html">Trang Chủ</a></span> / <span>Giỏ Hàng</span> / <span>Check Out</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="colorlib-product">
+        <div class="container">
+            <div class="row row-pb-lg">
+                <div class="col-sm-10 offset-md-1">
+                    <div class="process-wrap">
+                        <div class="process text-center active">
+                            <p><span>01</span></p>
+                            <h3>Giỏ Hàng</h3>
+                        </div>
+                        <div class="process text-center">
+                            <p><span>02</span></p>
+                            <h3>Thông Tin Đặt Hàng</h3>
+                        </div>
+                        <div class="process text-center">
+                            <p><span>03</span></p>
+                            <h3>Thanh Toán Thành Công</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <form method="post" class="colorlib-form">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <h2>Thông Tin Đơn Hàng</h2>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="fname">Họ Tên</label>
+                                        <label type="text" id="hoten" class="form-control" placeholder="">@kh.HoTen</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="fname">Địa Chỉ</label>
+                                        <label type="text" id="diachi" class="form-control" placeholder="">@kh.DiaChi</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Địa Chỉ E-mail</label>
+                                        <label type="text" id="email" class="form-control" placeholder="">@kh.Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Phone">Số Điện Thoại</label>
+                                        <label type="text" id="sdt" class="form-control" placeholder="">@kh.DienThoai</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ngaydat">Ngày Đặt Hàng</label>
+                                        <label type="text" id="ngaydat" class="form-control" placeholder="">@DateTime.Now.ToShortDateString()</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ngaygiao">Ngày Giao</label>
+                                        <label type="date" id="ngaygiao" class="form-control">@DateTime.Now.ToShortDateString()</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio"> Tạo 1 tài khoản ? </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn">
+                                    <span>Thanh Toán</span>
+                                </button>
+                            </div>
+                        }
+                    </form>
+                </div>
+               
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="cart-detail">
+                                    <h2>Tổng Sản Phẩm</h2>
+                                    <ul>
+                                        <li>
+                                            <span>Số sản phẩm: </span> <span>@ViewBag.TongSoLuong</span>
+                                        </li>
+                                        <li><span>Shipping :</span> <span> 0 VNĐ</span></li>
+                                        <li><span>Tổng Tiền :</span> <span>@string.Format("{0:0,0}", ViewBag.TongTien) Đ</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
+                                <div class="cart-detail">
+                                    <h2>Hình Thức Thanh Toán</h2>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio"> Thanh Toán Tiền Mặt Khi Nhận Hàng</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio"> Thẻ ATM nội địa/Internet Banking</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio"> Thanh toán bằng thẻ quốc tế Visa,Master,JCB,...</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value=""> Tôi đã đọc và chấp nhận các điều khoản và điều kiện</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

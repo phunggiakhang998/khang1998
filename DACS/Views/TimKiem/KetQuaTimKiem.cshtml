@@ -1,0 +1,48 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<DACS.Models.Giay>
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-weight:bold;color:#a23030">KẾT QUẢ TÌM KIẾM</h2>
+<div>@ViewBag.Thongbao</div>
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+
+            </div>
+        </div>
+        <div class="row row-pb-md">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="@Url.Action("Details","SanPham", new { id = @item.MaSP })" class="prod-img">
+                            <img src="~/images/@item.HinhAnh" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="@Url.Action("Details","SanPham", new { id = @item.MaSP })">@item.TenSP</a></h2>
+                            <span class="price">@string.Format("{0:0,0}", item.GiaBan) VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@* Tao liên kết các trang  *@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page, @sTukhoa = ViewBag.Tukhoa }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+

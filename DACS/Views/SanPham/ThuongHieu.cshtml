@@ -1,0 +1,11 @@
+﻿
+    @foreach (var item in Model)
+    {
+        <li style="color:white">
+            @*<a href="@Url.Action("GiayTheoTH", "SanPham","SanPham", new { id = item.MaTH})" class="list-group-item">
+                @item.TenTH
+            </a>*@
+            <a href="/SanPham/GiayTheoTH/@item.MaTH">@item.TenTH</a>
+        </li>
+    }
+

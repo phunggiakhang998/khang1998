@@ -1,0 +1,97 @@
+﻿@model DACS.Models.LienHe
+<div class="colorlib-loader"></div>
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="bread"><span><a href="index.html">Trang Chủ</a></span> / <span>Liên Hệ</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>THÔNG TIN LIÊN HỆ</h3>
+                <div class="row contact-info-wrap">
+                    <div class="col-md-3">
+                        <p><span><i class="icon-location"></i></span> 135/58 Trần Hưng Đạo, Q.1, TPHCM</p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920"> +09 49601714</a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-paperplane"></i></span> <a href="mailto:goldencooly@gmail.com">goldencooly@gmail.com</a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-globe"></i></span> <a href="#">KhangPro.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="row">
+                @using (Html.BeginForm("Contact", "Home"))
+                {
+
+                    @Html.ValidationSummary(true)
+                    <div class="contact-wrap">
+                        <h3>Hộp Phản Hồi</h3>
+                        <form action="#" class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fname">First Name</label>
+                                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Your firstname" required="">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lname">Last Name</label>
+                                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Your lastname" required="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" id="emailLH" name="emailLH" class="form-control" placeholder="Mời nhập địa chỉ Email của bạn..." required="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="subject">Tiêu Đề</label>
+                                        <input type="text" id="tieude" name="tieude" class="form-control" placeholder="Mời nhập tiêu đề của bạn..." required="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="message">Tin Nhắn</label>
+                                        <textarea id="tinnhan" name="tinnhan" cols="30" rows="10" class="form-control" placeholder="Mời nhập tin nhắn..." required=""></textarea>
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="submit" value="Gửi !" class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6">
+                <div id="map" class="colorlib-map"></div>
+            </div>
+        </div>
+    </div>
+</div>

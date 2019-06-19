@@ -1,0 +1,9 @@
+﻿.DangKyDangNhap{
+    
+    float:right;
+}
+
+.DangKyDangNhap a:hover{
+    text-decoration:none;
+    color:green;
+}
